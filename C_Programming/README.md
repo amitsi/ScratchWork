@@ -226,6 +226,18 @@ Output:
 
 	sizeof(ptr) = 4
 	*ptr = 10
+	
+**4) At compile time, an array is an array. Only during runtime, an array degenerates to a pointer**
+
+	int a[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	int *b = a;
+
+	printf("%d\n%d\n", sizeof(a), sizeof(b));
+	
+And the output is (assuming size of int is 4 bytes and address size is 8 bytes) –
+
+	40
+	8	
 
 Understanding **volatile** qualifier in C
 ----------------------------------------
