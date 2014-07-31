@@ -1,42 +1,42 @@
-<a id = 'home'></a>
-##Table of Contents
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents** 
 
-- [What are main characteristics of C language?](#1)
-- [What is difference between i++ and ++i?](#2)
-- [Difference between ++*p, *p++ and *++p](#3)
-- [What is l-value?](#4)
-- [How to write your own sizeof operator?](#5)
-- [Difference between pointer and array in C?](#6)
-- [Understanding **volatile** qualifier in C](#7)
-- [Can a variable be both const and volatile?](#16)
-- [What is the difference between declaration and definition of a variable/function](#8)
-- [What are different storage class specifiers in C?](#9)
-- [What is scope of a variable? How are variables scoped in C?](#10)
-- [What is NULL pointer? ](#11)
-- [What is Dangling pointer?](#12)
-- [What are local static variables? What is their use?](#13)
-- [What are static functions? What is their use?](#14)
-- [Assertions in C/C++](#17)
-- [C Precedence Table](#15)
-- [References](#Ref)
-- [Awesome sites about C Programming](#awe)
+- [What are main characteristics of C language?](#what-are-main-characteristics-of-c-language)
+- [What is difference between i++ and ++i?](#what-is-difference-between-i-and-i)
+- [Difference between ++*p, *p++ and *++p](#difference-between-p-p-and-p)
+- [What is l-value?](#what-is-l-value)
+- [How to write your own sizeof operator?](#how-to-write-your-own-sizeof-operator)
+- [Difference between pointer and array in C?](#difference-between-pointer-and-array-in-c)
+- [Understanding **volatile** qualifier in C](#understanding-volatile-qualifier-in-c)
+- [Can a variable be both const and volatile?](#can-a-variable-be-both-const-and-volatile)
+- [What is the difference between declaration and definition of a variable/function](#what-is-the-difference-between-declaration-and-definition-of-a-variablefunction)
+- [What are different storage class specifiers in C?](#what-are-different-storage-class-specifiers-in-c)
+- [What is scope of a variable? How are variables scoped in C?](#what-is-scope-of-a-variable-how-are-variables-scoped-in-c)
+- [What is NULL pointer? ](#what-is-null-pointer)
+- [What is Dangling pointer?](#what-is-dangling-pointer)
+- [What are local static variables? What is their use?](#what-are-local-static-variables-what-is-their-use)
+- [What are static functions? What is their use?](#what-are-static-functions-what-is-their-use)
+- [Assertions in C/C++](#assertions-in-cc)
+- [C Precedence Table](#c-precedence-table)
+- [References](#references)
+- [Awesome sites about C programming](#awesome-sites-about-c-programming)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
-<a id='1'></a>
-[What are main characteristics of C language? ](#home)
+###What are main characteristics of C language?
 ---------------------------------------------
 C is a procedural language. The main features of C language include low-level access to memory, simple set of keywords, and clean style. These features make it suitable for system programming like operating system or compiler development.
 
-<a id='2'></a>
-[What is difference between i++ and ++i?](#home)
+What is difference between i++ and ++i?
 ---------------------------------------
 * The expression 'i++' returns the old value and then increments i. The expression ++i increments the value and returns new value.
 * Precedence of postfix ++ is higher than that of prefix ++.
 * Associativity of postfix ++ is left to right and associativity of prefix ++ is right to left.
 * In C++, ++i can be used as l-value, but i++ cannot be. In C, they both cannot be used as l-value.
 
-<a id='3'></a>
-[Difference between ++*p, *p++ and *++p](#home)
+Difference between ++*p, *p++ and *++p
 ---------------------------------------
 
 *Program 1*
@@ -84,7 +84,7 @@ The expression ++\*p has two operators of same precedence, so compiler looks for
 
 The expression \*p++ is treated as \*(p++) as the precedence of postfix ++ is higher than \*. **Therefore the output of second program is "arr[0] = 10, arr[1] = 20, \*p = 20"**.
 
-The expression \*++p has two operators of same precedence, so compiler looks for assoiativity. Associativity of operators is right to left. Therefore the expression is treated as \*(++p). **Therefore the output of second program is "arr[0] = 10, arr[1] = 20, \*p = 20"**.
+The expression *++p has two operators of same precedence, so compiler looks for assoiativity. Associativity of operators is right to left. Therefore the expression is treated as *(++p). **Therefore the output of second program is "arr[0] = 10, arr[1] = 20, \*p = 20"**.
 
 *Another example:*
 	
@@ -102,24 +102,19 @@ The expression \*++p has two operators of same precedence, so compiler looks for
 
 	//OUTPUT: j = 2
 
-<a id='4'></a>
-[What is l-value?](#home)
+What is l-value?
 ----------------
 * l-value or location value refers to an expression that can be used on left side of assignment operator. For example in expression "a = 3", a is l-value and 3 is r-value.
 * l-values are of two types:
 	* **nonmodifiable l-value** represent a l-value that can not be modified. const variables are "nonmodifiable l-value".
 	* **modifiable l-value** represent a l-value that can be modified.
 
-
-<a id='5'></a>
-[How to write your own sizeof operator?](#home)
+How to write your own sizeof operator?
 --------------------------------------
 
 	#define my_sizeof(type) (char *)(&type+1)-(char*)(&type)
 
-
-<a id='6'></a>
-[Difference between pointer and array in C?](#home)
+Difference between pointer and array in C?
 ------------------------------------------
 Pointers are used for storing address of dynamically allocated arrays and for arrays which are passed as arguments to functions. In other contexts, arrays and pointer are two different things, see the following programs to justify this statement.
 
@@ -232,9 +227,7 @@ Output:
 	sizeof(ptr) = 4
 	*ptr = 10
 
-
-<a id='7'></a>
-[Understanding **volatile** qualifier in C](#home)
+Understanding **volatile** qualifier in C
 ----------------------------------------
 * The volatile keyword is intended to prevent the compiler from applying any optimizations on objects that can change in ways that cannot be determined by the compiler.
 
@@ -344,8 +337,7 @@ Output:
   
 The above example may not be a good practical example, the purpose was to explain how compilers interpret volatile keyword. As a practical example, think of touch sensor on mobile phones. The driver abstracting touch sensor will read the location of touch and send it to higher level applications. The driver itself should not modify (const-ness) the read location, and make sure it reads the touch input every time fresh (volatile-ness). Such driver must read the touch sensor input in const volatile manner.
 
-<a id='16'></a>
-[Can a variable be both const and volatile?](#home)
+Can a variable be both const and volatile?
 -----------------------------------------
 yes, the const means that the variable cannot be assigned a new value. The value can be changed by other code or pointer. For example the following program works fine.
 
@@ -359,8 +351,7 @@ yes, the const means that the variable cannot be assigned a new value. The value
 		return 0;
 	}
 
-<a id='8'></a>
-[What is the difference between declaration and definition of a variable/function](#home)
+What is the difference between declaration and definition of a variable/function
 --------------------------------------------------------------------------------
 Declaration of a variable/function simply declares that the variable/function exists somewhere in the program but the memory is not allocated for them. But the declaration of a variable/function serves an important role. And that is the type of the variable/function. Therefore, when a variable is declared, the program knows the data type of that variable. In case of function declaration, the program knows what are the arguments to that functions, their data types, the order of arguments and the return type of the function. So that's all about declaration. Coming to the definition, when we define a variable/function, apart from the role of declaration, it also allocates memory for that variable/function. Therefore, we can think of definition as a super set of declaration. (or declaration as a subset of definition). From this explanation, it should be obvious that a variable/function can be declared any number of times but it can be defined only once. (Remember the basic principle that you can't have two locations of the same variable/function).
 
@@ -370,29 +361,21 @@ Declaration of a variable/function simply declares that the variable/function ex
 	// This is both declaration and definition, memory to x is allocated by this statement.
 	int x;
 	  
-	  
-<a id='9'></a>
-[What are different storage class specifiers in C?](#home)
+What are different storage class specifiers in C?
 -------------------------------------------------
 auto, register, static, extern
 
-
-<a id='10'></a>
-[What is scope of a variable? How are variables scoped in C?](#home)
+What is scope of a variable? How are variables scoped in C?
 -----------------------------------------------------------
 Scope of a variable is the part of the program where the variable may directly be accessible. In C, all identifiers are lexically (or statically) scoped.
 **Lexical scoping** (sometimes known as static scoping ) is a convention used with many programming languages that sets the scope (range of functionality) of a variable so that it may only be called (referenced) from within the block of code in which it is defined. The scope is determined when the code is compiled. A variable declared in this fashion is sometimes called a private variable.
 The opposite approach is known as **dynamic scoping** . Dynamic scoping creates variables that can be called from outside the block of code in which they are defined. A variable declared in this fashion is sometimes called a public variable.
 
-
-<a id='11'></a>
-[What is NULL pointer?](#home) 
+What is NULL pointer? 
 ---------------------
 NULL is used to indicate that the pointer doesn't point to a valid location. Ideally, we should initialize pointers as NULL if we don't know their value at the time of declaration. Also, we should make a pointer NULL when memory pointed by it is deallocated in the middle of a program.
 
-
-<a id='12'></a>
-[What is Dangling pointer?](#home)
+What is Dangling pointer?
 -------------------------
 Dangling Pointer is a pointer that doesn't point to a valid memory location. Dangling pointers arise when an object is deleted or deallocated, without modifying the value of the pointer, so that the pointer still points to the memory location of the deallocated memory. Following are examples.
 
@@ -416,9 +399,7 @@ Dangling Pointer is a pointer that doesn't point to a valid memory location. Dan
 	// x goes out of scope and memory allocated to x is free now.
 	// So ptr is a dangling pointer now.
 	
-
-<a id='13'></a>
-[What are local static variables? What is their use?](#home)
+What are local static variables? What is their use?
 ---------------------------------------------------
 A local static variable is a variable whose lifetime doesn't end with a function call where it is declared. It extends for the lifetime of complete program. All calls to the function share the same copy of local static variables. Static variables can be used to count the number of times a function is called. Also, static variables get the default value as 0. For example, the following program prints "0 1"
 
@@ -439,14 +420,11 @@ A local static variable is a variable whose lifetime doesn't end with a function
 	}
 	// Output: 0 1
 	
-
-<a id='14'></a>
-[What are static functions? What is their use?](#home)
+What are static functions? What is their use?
 ----------------------------------------------
 In C, functions are global by default. The "static" keyword before a function name makes it static. Unlike global functions in C, access to static functions is restricted to the file where they are declared. Therefore, when we want to restrict access to functions, we make them static. Another reason for making functions static can be reuse of the same function name in other files.
 
-<a id='17'></a>
-[Assertions in C/C++](#home)
+Assertions in C/C++
 -------------------
 Assertions are statements used to test assumptions made by programmer. For example, we may use assertion to check if pointer returned by malloc() is NULL or not.
 
@@ -502,8 +480,7 @@ In C/C++, we can completely remove assertions at compile time using the preproce
 	
 The above program compiles and runs fine.
 
-<a id='15'></a>
-[C Precedence Table](#home)
+C Precedence Table
 --------------------
 <table>
         <tr>
@@ -668,12 +645,10 @@ The above program compiles and runs fine.
                 incremented after all else is done. 
         </font></dd></dl></blockquote></td></tr></center></table>
 
-<a id="Ref"></a>
-[References](#home)
+References
 ----------
 * http://geeksquiz.com/
 
-<a id="awe"></a>
-[Awesome sites about C programming](#home)
+Awesome sites about C programming
 ------------------------------------
 * http://sathyamvellal.in/blog/cool-c-programming/
