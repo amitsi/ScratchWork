@@ -176,6 +176,7 @@ Output:
 	Value of first element is 10
  
 **2) Array members are accessed using pointer arithmetic.**
+
 Compiler uses pointer arithmetic to access array element. For example, an expression like "arr[i]" is treated as *(arr + i) by the compiler. That is why the expressions like *(arr + i) work for array arr, and expressions like ptr[i] also work for pointer ptr.
 
 	#include <stdio.h>
@@ -227,7 +228,7 @@ Output:
 	sizeof(ptr) = 4
 	*ptr = 10
 	
-**4) At compile time, an array is an array. Only during runtime, an array degenerates to a pointer**
+**4) At compile time, an array is an array. Only during runtime, an array degenerates to a pointer (constant pointer)**
 
 	int a[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 	int *b = a;
