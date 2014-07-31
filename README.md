@@ -1,1 +1,1 @@
-These are few programs which i wrote as a part of my hobby and few are assignment cum hobby programs
+This is the place where i keep my scratch work. All the stuffs i refer, i write are here and will be updated here.
