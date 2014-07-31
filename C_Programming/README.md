@@ -84,7 +84,7 @@ The expression ++\*p has two operators of same precedence, so compiler looks for
 
 The expression \*p++ is treated as \*(p++) as the precedence of postfix ++ is higher than \*. **Therefore the output of second program is "arr[0] = 10, arr[1] = 20, \*p = 20"**.
 
-The expression *++p has two operators of same precedence, so compiler looks for assoiativity. Associativity of operators is right to left. Therefore the expression is treated as *(++p). **Therefore the output of second program is "arr[0] = 10, arr[1] = 20, \*p = 20"**.
+The expression \*++p has two operators of same precedence, so compiler looks for assoiativity. Associativity of operators is right to left. Therefore the expression is treated as \*(++p). **Therefore the output of second program is "arr[0] = 10, arr[1] = 20, \*p = 20"**.
 
 *Another example:*
 	
