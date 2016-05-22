@@ -6,8 +6,10 @@ Step 0
 Decrypt the file which is base64'd after being encrypted with repeating-key XOR.
 '''
 
-ciphertext = open("cipher.txt", "r").read().strip().decode("base64")
-numOfKeysToTry = 3
+ciphertext = open("ciphertext.txt", "r").read().strip().decode("base64")
+
+# Number of keys of different sizes to try which one breaks the cipher
+numOfKeysToTry = 1
 
 '''
 Step 1-4
