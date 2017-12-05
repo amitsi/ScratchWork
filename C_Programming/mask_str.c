@@ -6,9 +6,9 @@
 
 /*
  * C code to mask a portion of the string matched by parenthesis enclosed pattern
- * Run: gcc reg.c -lbsd
+ * Run: gcc mask_str.c
  * Output:
- *     Pattern: .* password (\S+).*
+ *     Pattern: .* password ([^ ]+).*
  *     Match String: list password test123 all files
  *     Masked String: list password ***** all files
  */
@@ -21,6 +21,7 @@ mask_str(const char *str, const char *pattern, char *mstr, size_t mstr_len)
         regoff_t        rm_so, rm_eo;
 
         if (regcomp(&regex, pattern, REG_EXTENDED) != 0) {
+		printf("Unable to compile\n");
                 return (NULL);
         }
         if (regexec(&regex, str, sizeof (rematch)/sizeof (rematch[0]),
@@ -35,17 +36,19 @@ mask_str(const char *str, const char *pattern, char *mstr, size_t mstr_len)
                 memcpy(mstr+rm_so, MASK_STRING, strlen(MASK_STRING));
                 memcpy(mstr+rm_so+strlen(MASK_STRING), str+rm_eo,
 		    strlen(str) - rm_eo);
-                mstr[strlen(str) + strlen(MASK_STRING)] = '\0';
-        }
+                mstr[strlen(str) + strlen(MASK_STRING) + rm_so - rm_eo] = '\0';
+        } else {
+		printf("Unable to match the pattern\n");
+	}
         regfree(&regex);
         return (mstr);
 }
 
 int main(void) {
-	char *match_str = "list password test123 all files";
-	char *pattern = ".* password (\\S+).*";
-	char masked_str[128];
-	char *cmd_ptr;
+	char	*match_str = "list password test123 all files";
+	char	*pattern = ".* password ([^ ]+).*";
+	char	*cmd_ptr;
+	char	masked_str[128];
 
 	printf("Pattern: %s\n", pattern);
 	printf("Match String: %s\n", match_str);
