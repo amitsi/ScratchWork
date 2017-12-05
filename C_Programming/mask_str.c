@@ -22,8 +22,9 @@ mask_str(const char *str, const char *pattern, char *mstr, size_t mstr_len)
 
         if (regcomp(&regex, pattern, REG_EXTENDED) != 0) {
 		printf("Unable to compile\n");
-                return (NULL);
+		return (NULL);
         }
+
         if (regexec(&regex, str, sizeof (rematch)/sizeof (rematch[0]),
             rematch, 0) == 0) {
                 if (rematch[1].rm_so == -1 || rematch[1].rm_eo == -1) {
@@ -32,11 +33,14 @@ mask_str(const char *str, const char *pattern, char *mstr, size_t mstr_len)
                 }
                 rm_so = rematch[1].rm_so;
                 rm_eo = rematch[1].rm_eo;
+                /* Check if masking will not exceed string length limits */
+                if (strlen(str) + strlen(MASK_STRING) - (rm_eo - rm_so) >= mstr_len) {
+                        return (NULL);
+                }
                 memcpy(mstr, str, rm_so);
                 memcpy(mstr+rm_so, MASK_STRING, strlen(MASK_STRING));
-                memcpy(mstr+rm_so+strlen(MASK_STRING), str+rm_eo,
-		    strlen(str) - rm_eo);
-                mstr[strlen(str) + strlen(MASK_STRING) + rm_so - rm_eo] = '\0';
+                memcpy(mstr+rm_so+strlen(MASK_STRING), str+rm_eo, strlen(str) - rm_eo);
+                mstr[mstr_len - 1] = '\0';
         } else {
 		printf("Unable to match the pattern\n");
 	}
