@@ -52,7 +52,7 @@ int main(void) {
 	char	*match_str = "list password test123 all files";
 	char	*pattern = ".* password ([^ ]+).*";
 	char	*cmd_ptr;
-	char	masked_str[128];
+	char	masked_str[128] = {0};
 
 	printf("Pattern: %s\n", pattern);
 	printf("Match String: %s\n", match_str);
