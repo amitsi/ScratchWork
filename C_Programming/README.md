@@ -19,8 +19,6 @@
 - [What are static functions? What is their use?](#what-are-static-functions-what-is-their-use)
 - [Assertions in C/C++](#assertions-in-cc)
 - [C Precedence Table](#c-precedence-table)
-- [References](#references)
-- [Awesome sites about C programming](#awesome-sites-about-c-programming)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -657,11 +655,3 @@ C Precedence Table
                 ><b>z</b></font> only 
                 incremented after all else is done. 
         </font></dd></dl></blockquote></td></tr></center></table>
-
-References
-----------
-* http://geeksquiz.com/
-
-Awesome sites about C programming
-------------------------------------
-* http://sathyamvellal.in/blog/cool-c-programming/
