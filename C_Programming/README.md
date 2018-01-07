@@ -25,7 +25,7 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
-###What are main characteristics of C language?
+What are main characteristics of C language?
 ---------------------------------------------
 C is a procedural language. The main features of C language include low-level access to memory, simple set of keywords, and clean style. These features make it suitable for system programming like operating system or compiler development.
 
